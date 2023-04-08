@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="site.surui.web.student.mapper.StudentMapper">
+
+    <select id="selectPossibleStudents" resultType="site.surui.web.common.data.po.Student">
+        SELECT s.* FROM student s
+        <trim prefix="WHERE" prefixOverrides="AND |OR ">
+            <if test="same != null">
+                AND s.class_id = (SELECT s.class_id FROM student s WHERE s.id=#{id})
+            </if>
+            <if test="name != null and name != ''">
+                AND s.name REGEXP #{name}
+            </if>
+            <if test="userId != null and userId != ''">
+                AND s.user_id LIKE CONCAT('%', #{userId}, '%')
+            </if>
+            <if test="major != null and major != ''">
+                AND s.major REGEXP #{major}
+            </if>
+            AND s.id != #{id}
+        </trim>
+    </select>
+
+
+    <select id="selectStudentsForSocialActivity" resultType="site.surui.web.common.data.po.Student">
+        SELECT s.* FROM student s
+        <trim prefix="WHERE" prefixOverrides="AND |OR ">
+            <if test="name != null and name != ''">
+                AND s.name REGEXP #{name}
+            </if>
+            <if test="id != null and id != ''">
+                AND s.user_id LIKE CONCAT('%', #{id}, '%')
+            </if>
+        </trim>
+    </select>
+
+</mapper>

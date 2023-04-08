@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="site.surui.web.student.mapper.CommentMapper">
+
+    <select id="findAllUnsatisfiedComments" resultType="site.surui.web.common.data.po.Student">
+        SELECT DISTINCT(s.id), s.*
+        FROM student s
+                 LEFT JOIN comment c ON s.id = c.student_id
+                 RIGHT JOIN class_info ci ON s.class_id = (SELECT cl.id
+                                                           FROM class_info cl
+                                                                    JOIN student ON student.class_id = cl.id
+                                                           WHERE student.id = #{id})
+        WHERE s.id != #{id}
+    </select>
+
+</mapper>

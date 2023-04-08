@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="site.surui.web.webcourse.mapper.CourseInfoMapper">
+
+    <select id="findAllByCondition" resultType="site.surui.web.common.data.po.CourseInfo">
+        SELECT * FROM course
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="name != null and name != '' ">
+                AND name = #{name}
+            </if>
+            <if test="teacher != null and name != ''">
+                AND teacher=#{teacher}
+            </if>
+            <if test="teacherId != null and teacherId != ''">
+                AND tid=#{teacherId}
+            </if>
+            <if test="courseId != null and courseId != ''">
+                AND course_id=#{courseId}
+            </if>
+        </trim>
+    </select>
+
+    <select id="findAllTimes" resultType="site.surui.web.common.data.po.CourseTime">
+        SELECT time.* FROM course_time time JOIN course_time_relation ctr ON ctr.tid=time.id WHERE ctr.cid=#{course}
+        <trim>
+            <if test="week != null">
+                AND time.week=#{week}
+            </if>
+            <if test="start != null">
+                <if test="end != null">
+                    AND (#{end} >= time.week AND time.week >= #{start})
+                </if>
+            </if>
+        </trim>
+    </select>
+
+    <select id="findCourseByNameAndCredit" resultType="site.surui.web.common.data.po.CourseInfo">
+        SELECT c.* FROM course c JOIN education_plan ep on c.pid = ep.id
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="name != null and name !=''">
+                AND c.name REGEXP #{name}
+            </if>
+            <if test="low != null">
+                <if test="high != null">
+                    AND (c.credit >= #{low} AND #{high} >= c.credit)
+                </if>
+            </if>
+            <if test="type != null and type != ''">
+                AND ep.type=#{type}
+            </if>
+            <if test="state != null">
+                AND ep.state=#{state}
+            </if>
+        </trim>
+    </select>
+</mapper>
