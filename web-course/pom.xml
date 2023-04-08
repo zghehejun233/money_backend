@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>web</artifactId>
-        <groupId>site.surui.web</groupId>
+        <groupId>site.forum.web</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
@@ -15,7 +15,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>site.surui.web</groupId>
+            <groupId>site.forum.web</groupId>
             <artifactId>web-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
@@ -76,7 +76,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>site.surui.web.webcourse.WebCourseApplication</mainClass>
+                    <mainClass>site.forum.web.webcourse.WebCourseApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

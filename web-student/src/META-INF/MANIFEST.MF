@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: site.surui.web.student.WebStudentApplication
+Main-Class: site.forum.web.student.WebStudentApplication
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="site.surui.web.teacher.mapper.ExamMapper">
+<mapper namespace="site.forum.web.teacher.mapper.ExamMapper">
 
-    <select id="selectStudentsByCourse" resultType="site.surui.web.common.data.po.Student">
+    <select id="selectStudentsByCourse" resultType="site.forum.web.common.data.po.Student">
         SELECT s.*
         FROM student_exam_relation ser
                  INNER JOIN student s on ser.sid = s.id
@@ -10,7 +10,7 @@
         WHERE e.cid = #{id} AND e.status=1
     </select>
 
-    <select id="selectExamByStatusAndId" resultType="site.surui.web.common.data.po.Exam">
+    <select id="selectExamByStatusAndId" resultType="site.forum.web.common.data.po.Exam">
         SELECT e.* FROM exam e WHERE tid = #{tid} AND status = #{status} AND e.status=1
     </select>
 </mapper>

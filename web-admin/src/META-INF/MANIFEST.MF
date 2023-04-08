@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: site.surui.web.admin.WebAdminApplication
+Main-Class: site.forum.web.admin.WebAdminApplication
 

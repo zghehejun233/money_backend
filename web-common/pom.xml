@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>web</artifactId>
-        <groupId>site.surui.web</groupId>
+        <groupId>site.forum.web</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 

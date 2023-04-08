@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="site.surui.web.admin.mapper.BaseActivityMapper">
+<mapper namespace="site.forum.web.admin.mapper.BaseActivityMapper">
 
-    <select id="selectActivity" resultType="site.surui.web.common.data.po.BaseActivity">
+    <select id="selectActivity" resultType="site.forum.web.common.data.po.BaseActivity">
         SELECT *
         FROM activity
         <trim prefix="WHERE" prefixOverrides="AND |OR ">

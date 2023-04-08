@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="site.surui.web.webcourse.mapper.CourseInfoMapper">
+<mapper namespace="site.forum.web.webcourse.mapper.CourseInfoMapper">
 
-    <select id="findAllByCondition" resultType="site.surui.web.common.data.po.CourseInfo">
+    <select id="findAllByCondition" resultType="site.forum.web.common.data.po.CourseInfo">
         SELECT * FROM course
         <trim prefix="WHERE" prefixOverrides="AND|OR">
             <if test="name != null and name != '' ">
@@ -20,7 +20,7 @@
         </trim>
     </select>
 
-    <select id="findAllTimes" resultType="site.surui.web.common.data.po.CourseTime">
+    <select id="findAllTimes" resultType="site.forum.web.common.data.po.CourseTime">
         SELECT time.* FROM course_time time JOIN course_time_relation ctr ON ctr.tid=time.id WHERE ctr.cid=#{course}
         <trim>
             <if test="week != null">
@@ -34,7 +34,7 @@
         </trim>
     </select>
 
-    <select id="findCourseByNameAndCredit" resultType="site.surui.web.common.data.po.CourseInfo">
+    <select id="findCourseByNameAndCredit" resultType="site.forum.web.common.data.po.CourseInfo">
         SELECT c.* FROM course c JOIN education_plan ep on c.pid = ep.id
         <trim prefix="WHERE" prefixOverrides="AND|OR">
             <if test="name != null and name !=''">
